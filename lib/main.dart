@@ -11,10 +11,16 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       home: Scaffold(
+      appBar: AppBar(
+        title: Align(
+          alignment: Alignment.centerLeft,
+          child: Text ("Bridle")
+          )
+        ),
         body: Center(
-          child: Title("A", HitType.hit),
+          child: Title("B", HitType.hit),
         ),
       ),
     );

@@ -59,6 +59,11 @@ class GamePage extends StatelessWidget {
         children: [
           for (final guess in _game.guesses)
             Row(children: [for (final x in guess) Title(x.char, x.type)]),
+            GuessInput(
+              onSubmitGuess: (text) {
+              print(text);
+            },
+          ),
         ],
       ),
     );
@@ -70,7 +75,7 @@ class GuessInput extends StatelessWidget {
   final Function(String) onSubmitGuess;
   final FocusNode _focus = FocusNode();
   final TextEditingController _controller = TextEditingController();
-  void Fune() {
+  void Func() {
     onSubmitGuess(_controller.text.trim());
     _focus.requestFocus();
     _controller.clear();
@@ -85,7 +90,7 @@ class GuessInput extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: TextField(
               onSubmitted: (text) {
-                Fune();
+                Func();
               },
               maxLength: 5,
               focusNode: _focus,
@@ -103,7 +108,7 @@ class GuessInput extends StatelessWidget {
           padding: EdgeInsets.zero,
           icon: Icon(Icons.arrow_circle_up),
           onPressed: () {
-            Fune();
+            Func();
           },
         ),
       ],

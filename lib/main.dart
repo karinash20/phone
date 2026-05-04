@@ -70,6 +70,12 @@ class GuessInput extends StatelessWidget {
   final Function(String) onSubmitGuess;
   final FocusNode _focus = FocusNode();
   final TextEditingController _controller = TextEditingController();
+  void Fune() {
+    onSubmitGuess(_controller.text.trim());
+    _focus.requestFocus();
+    _controller.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -78,6 +84,7 @@ class GuessInput extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(8.0),
             child: TextField(
+              onSubmitted: Fune(),
               maxLength: 5,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -91,9 +98,7 @@ class GuessInput extends StatelessWidget {
           padding: EdgeInsets.zero,
           icon: Icon(Icons.arrow_circle_up),
           onPressed: () {
-            onSubmitGuess(_controller.text.trim());
-            _focus.requestFocus();
-            _controller.clear();
+            Fune();
           },
         ),
       ],

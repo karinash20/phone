@@ -84,8 +84,13 @@ class GuessInput extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(8.0),
             child: TextField(
-              onSubmitted: Fune(),
+              onSubmitted: (text) {
+                Fune();
+              },
               maxLength: 5,
+              focusNode: _focus,
+              controller: _controller,
+              autofocus: true,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(35)),

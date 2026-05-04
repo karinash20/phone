@@ -68,6 +68,8 @@ class GamePage extends StatelessWidget {
 class GuessInput extends StatelessWidget {
   GuessInput({super.key, required this.onSubmitGuess});
   final Function(String) onSubmitGuess;
+  final FocusNode _focus = FocusNode();
+  final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -84,6 +86,15 @@ class GuessInput extends StatelessWidget {
               ),
             ),
           ),
+        ),
+        IconButton(
+          padding: EdgeInsets.zero,
+          icon: Icon(Icons.arrow_circle_up),
+          onPressed: () {
+            onSubmitGuess(_controller.text.trim());
+            _focus.requestFocus();
+            _controller.clear();
+          },
         ),
       ],
     );

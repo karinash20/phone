@@ -46,8 +46,13 @@ class Title extends StatelessWidget {
   }
 }
 
-class GamePage extends StatelessWidget {
+class GamePage extends StatefulWidget {
   GamePage({super.key});
+  @override
+  State<GamePage> createState() => _GamePageState();
+}
+
+class _GamePageState extends State<GamePage> {
   final Game _game = Game();
 
   @override
@@ -55,13 +60,14 @@ class GamePage extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: Column(
-        spacing: 5.0,
         children: [
           for (final guess in _game.guesses)
             Row(children: [for (final x in guess) Title(x.char, x.type)]),
-            GuessInput(
-              onSubmitGuess: (text) {
-              print(text);
+          GuessInput(
+            onSubmitGuess: (text) {
+              setState(() {
+                _game.guess(text);
+              });
             },
           ),
         ],
